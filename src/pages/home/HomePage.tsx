@@ -1,10 +1,9 @@
+import Header from "./components/Header"
 
 
 function HomePage() {
   return (
-    <div>
-      xd
-    </div>
+    <Header></Header>
   )
 }
 
