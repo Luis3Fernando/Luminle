@@ -8,6 +8,12 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FaFlag } from "react-icons/fa6";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { TbCircleLetterLFilled } from "react-icons/tb";
+import * as motion from "motion/react-client";
+
+const ball = {
+    backgroundColor: "transparent",
+    width: 'auto'
+}
 
 const Header: React.FC = () => {
     const [showStats, setShowStats] = useState(false);
@@ -55,19 +61,30 @@ const Header: React.FC = () => {
 
             {showStats && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-                    <div className="bg-gray-900 relative text-white p-6 rounded-xl w-full max-w-md shadow-2xl shadow-green-300">
-                        <SiRedcandlegames className='mx-auto' size={80} />
-                        <h2 className="text-2xl text-center mt-5 font-semibold mb-4">Statistics</h2>
-                        <p className='flex text-xl items-center gap-2'><TbCircleLetterLFilled /> Right words: ...</p>
-                        <p className='flex text-xl items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: ...</p>
-                        <p className='flex text-xl items-center gap-2'><FaFlag /> Record: ...</p>
-                        <button
-                            onClick={() => setShowStats(false)}
-                            className="text-gray-700 absolute right-2 top-2 cursor-pointer hover:text-gray-600 transition"
-                        >
-                            <IoIosCloseCircleOutline size={40} />
-                        </button>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 0.4,
+                            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                        }}
+                        style={ball}>
+
+                        <div className="bg-gray-900 relative text-white p-6 rounded-xl w-96 max-w-md shadow-2xl shadow-green-300">
+                            <SiRedcandlegames className='mx-auto' size={80} />
+                            <h2 className="text-2xl text-center mt-5 font-semibold mb-4">Statistics</h2>
+                            <p className='flex text-xl items-center gap-2'><TbCircleLetterLFilled /> Right words: ...</p>
+                            <p className='flex text-xl items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: ...</p>
+                            <p className='flex text-xl items-center gap-2'><FaFlag /> Record: ...</p>
+                            <button
+                                onClick={() => setShowStats(false)}
+                                className="text-gray-700 absolute right-2 top-2 cursor-pointer hover:text-gray-600 transition"
+                            >
+                                <IoIosCloseCircleOutline size={40} />
+                            </button>
+                        </div>
+                    </motion.div>
+
                 </div>
             )}
 
