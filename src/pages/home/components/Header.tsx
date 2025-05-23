@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { FaGithub } from "react-icons/fa";
 import { IoStatsChart } from "react-icons/io5";
 import { BsFillInfoCircleFill } from "react-icons/bs";
-import { IoSettings } from "react-icons/io5";
 import { SiRedcandlegames } from "react-icons/si";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { FaFlag } from "react-icons/fa6";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { TbCircleLetterLFilled } from "react-icons/tb";
+import { FaGamepad } from "react-icons/fa6";
+import { GiPlainCircle } from "react-icons/gi";
 import * as motion from "motion/react-client";
 
 const ball = {
@@ -18,7 +19,6 @@ const ball = {
 const Header: React.FC = () => {
     const [showStats, setShowStats] = useState(false);
     const [showHowToPlay, setShowHowToPlay] = useState(false);
-    const [showSettings, setShowSettings] = useState(false);
 
     return (
         <>
@@ -40,12 +40,6 @@ const Header: React.FC = () => {
                         className="hover:text-blue-400 transition flex gap-2"
                     >
                         <BsFillInfoCircleFill size={22} /> How to play?
-                    </button>
-                    <button
-                        onClick={() => setShowSettings(true)}
-                        className="hover:text-orange-400 transition flex gap-2"
-                    >
-                        <IoSettings size={22} /> Settings
                     </button>
                     <a
                         href="https://github.com/Luis3Fernando/Luminle"
@@ -72,7 +66,7 @@ const Header: React.FC = () => {
 
                         <div className="bg-gray-900 relative text-white p-6 rounded-xl w-96 max-w-md shadow-2xl shadow-green-300">
                             <SiRedcandlegames className='mx-auto' size={80} />
-                            <h2 className="text-2xl text-center mt-5 font-semibold mb-4">Statistics</h2>
+                            <h2 className="text-2xl text-center mt-5 font-semibold mb-6">Statistics</h2>
                             <p className='flex text-xl items-center gap-2'><TbCircleLetterLFilled /> Right words: ...</p>
                             <p className='flex text-xl items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: ...</p>
                             <p className='flex text-xl items-center gap-2'><FaFlag /> Record: ...</p>
@@ -88,45 +82,34 @@ const Header: React.FC = () => {
                 </div>
             )}
 
-            {/* Modal: Cómo jugar */}
             {showHowToPlay && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-                    <div className="bg-gray-900 text-white p-6 rounded-xl w-full max-w-md shadow-2xl">
-                        <h2 className="text-xl font-semibold mb-4">❓ Cómo jugar</h2>
-                        <ul className="list-disc list-inside space-y-2 text-sm">
-                            <li>Escribe una palabra de 5 letras.</li>
-                            <li>Tienes 6 intentos.</li>
-                            <li><span className="text-green-400">Verde</span>: letra correcta en lugar correcto.</li>
-                            <li><span className="text-yellow-300">Amarillo</span>: letra correcta, lugar incorrecto.</li>
-                            <li><span className="text-red-500">Rojo</span>: letra incorrecta.</li>
-                        </ul>
-                        <button
-                            onClick={() => setShowHowToPlay(false)}
-                            className="mt-4 bg-blue-500 hover:bg-blue-600 transition px-4 py-2 rounded text-white"
-                        >
-                            Cerrar
-                        </button>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 0.4,
+                            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+                        }}
+                        style={ball}>
+
+                        <div className="bg-gray-900 relative text-white p-6 rounded-xl w-96 max-w-max shadow-2xl shadow-blue-300">
+                            <FaGamepad className='mx-auto' size={80} />
+                            <h2 className="text-2xl text-center mt-5 font-semibold mb-6">How to play?</h2>
+                            <p className='flex text-lg items-center gap-2 mb-3'><GiPlainCircle />you have 6 tries to find the word</p>
+                            <p className='flex text-lg items-center gap-2 mb-3'><GiPlainCircle />Increases the time by getting it right</p>
+                            <p className='flex text-lg items-center gap-2'><GiPlainCircle />Use the keyboard to type</p>
+                            <button
+                                onClick={() => setShowHowToPlay(false)}
+                                className="text-gray-700 absolute right-2 top-2 cursor-pointer hover:text-gray-600 transition"
+                            >
+                                <IoIosCloseCircleOutline size={40} />
+                            </button>
+                        </div>
+                    </motion.div>
+
                 </div>
             )}
-
-            {showSettings && (
-                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-                    <div className="bg-gray-900 text-white p-6 rounded-xl w-full max-w-md shadow-2xl">
-                        <h2 className="text-xl font-semibold mb-4">Ajustes</h2>
-                        <p>⚡ Palabras acertadas: ...</p>
-                        <p>🕒 Tiempo total: ...</p>
-                        <p>🏆 Récord: ...</p>
-                        <button
-                            onClick={() => setShowSettings(false)}
-                            className="mt-4 bg-orange-400 hover:bg-orange-600 transition px-4 py-2 rounded text-white"
-                        >
-                            Cerrar
-                        </button>
-                    </div>
-                </div>
-            )}
-
         </>
     );
 };
