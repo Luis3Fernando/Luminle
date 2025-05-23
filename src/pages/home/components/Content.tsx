@@ -1,10 +1,8 @@
 "use client"
-
-import { FaPlay } from "react-icons/fa";
-import { animate, stagger } from "motion";
-import { splitText } from "motion-plus";
 import { useEffect, useRef } from "react";
-import { HiPlayCircle } from "react-icons/hi2";
+import { splitText } from "motion-plus";
+import { animate, stagger } from "motion";
+import { FaPlay } from "react-icons/fa";
 
 function Content() {
   const containerRef = useRef<HTMLDivElement>(null)

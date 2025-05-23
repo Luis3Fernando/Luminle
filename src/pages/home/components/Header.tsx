@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { FaGithub } from "react-icons/fa";
+import { FaGamepad, FaFlag} from "react-icons/fa6";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 import { IoStatsChart } from "react-icons/io5";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { SiRedcandlegames } from "react-icons/si";
-import { IoIosCloseCircleOutline } from "react-icons/io";
-import { FaFlag } from "react-icons/fa6";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { TbCircleLetterLFilled } from "react-icons/tb";
-import { FaGamepad } from "react-icons/fa6";
 import { GiPlainCircle } from "react-icons/gi";
 import * as motion from "motion/react-client";
 
