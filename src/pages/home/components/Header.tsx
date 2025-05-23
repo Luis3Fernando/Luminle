@@ -3,6 +3,11 @@ import { FaGithub } from "react-icons/fa";
 import { IoStatsChart } from "react-icons/io5";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 import { IoSettings } from "react-icons/io5";
+import { SiRedcandlegames } from "react-icons/si";
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import { FaFlag } from "react-icons/fa6";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { TbCircleLetterLFilled } from "react-icons/tb";
 
 const Header: React.FC = () => {
     const [showStats, setShowStats] = useState(false);
@@ -48,19 +53,19 @@ const Header: React.FC = () => {
                 </nav>
             </header>
 
-            {/* Modal: Estadísticas */}
             {showStats && (
                 <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-                    <div className="bg-gray-900 text-white p-6 rounded-xl w-full max-w-md shadow-2xl">
-                        <h2 className="text-xl font-semibold mb-4">📊 Estadísticas</h2>
-                        <p>⚡ Palabras acertadas: ...</p>
-                        <p>🕒 Tiempo total: ...</p>
-                        <p>🏆 Récord: ...</p>
+                    <div className="bg-gray-900 relative text-white p-6 rounded-xl w-full max-w-md shadow-2xl">
+                        <SiRedcandlegames className='mx-auto' size={80} />
+                        <h2 className="text-xl text-center mt-5 font-semibold mb-4">Statistics</h2>
+                        <p className='flex items-center gap-2'><TbCircleLetterLFilled /> Right words: ...</p>
+                        <p className='flex items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: ...</p>
+                        <p className='flex items-center gap-2'><FaFlag /> Record: ...</p>
                         <button
                             onClick={() => setShowStats(false)}
-                            className="mt-4 bg-green-400 hover:bg-green-600 transition px-4 py-2 rounded text-white"
+                            className="text-gray-700 absolute right-2 top-2 cursor-pointer hover:text-gray-600 transition"
                         >
-                            Cerrar
+                            <IoIosCloseCircleOutline size={40} />
                         </button>
                     </div>
                 </div>
