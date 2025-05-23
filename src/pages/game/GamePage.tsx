@@ -1,5 +1,5 @@
 
-function Play() {
+function GamePage() {
   return (
     <div>
       
@@ -7,4 +7,4 @@ function Play() {
   )
 }
 
-export default Play
+export default GamePage

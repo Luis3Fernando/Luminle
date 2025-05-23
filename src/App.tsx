@@ -1,11 +1,18 @@
-import './App.css'
+import './App.css';
+import { Routes, Route } from "react-router-dom";;
+import Layout from "./layout/Layout";
+import HomePage from './pages/HomePage';
+import GamePage from './pages/GamePage';
 
 function App() {
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-tr font-neon from-dark-secondary to-dark-primary text-white">
-       <h1>dasbdjas</h1>
-      </div>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/game" element={<GamePage />} />
+        </Route>
+      </Routes>
     </>
   )
 }
