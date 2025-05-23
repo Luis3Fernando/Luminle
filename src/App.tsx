@@ -3,9 +3,9 @@ import './App.css'
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <div className="min-h-screen bg-gradient-to-tr font-neon from-dark-secondary to-dark-primary text-white">
+       <h1>dasbdjas</h1>
+      </div>
     </>
   )
 }
