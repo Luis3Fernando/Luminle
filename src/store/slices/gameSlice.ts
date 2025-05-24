@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { GameState } from '@interface/game';
+import { words_1 } from '@data/words';
 
 const initialState: GameState = {
   word_correct: null,
@@ -12,8 +13,8 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    initGame(state, action: PayloadAction<{ word: string }>) {
-      state.word_correct = action.payload.word;
+    initGame(state) {
+      state.word_correct = words_1[Math.floor(Math.random() * words_1.length)];
       state.words = [];
       state.nivel = 1;
       state.time = 60;

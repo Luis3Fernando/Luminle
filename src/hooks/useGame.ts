@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { compareStrings } from '../utils/words';
 import type { RootState } from '@store/store';
 import {
   initGame,
@@ -7,7 +8,6 @@ import {
   updateTime,
   resetGame,
 } from '@store/slices/gameSlice';
-import { words_1 } from '@data/words';
 
 const STORAGE_KEY = 'GAME_STATE';
 
@@ -27,8 +27,7 @@ export const useGame = () => {
     try {
       const jsonValue = localStorage.getItem(STORAGE_KEY);
       if (jsonValue != null) {
-        const parsed = JSON.parse(jsonValue);
-        dispatch(initGame({ word: parsed.word_correct }));
+        dispatch(initGame());
       }
     } catch (error) {
       console.error('Error loading state:', error);
@@ -36,8 +35,7 @@ export const useGame = () => {
   };
 
   const initializeGame = () => {
-    const randomWord = words_1[Math.floor(Math.random() * words_1.length)];
-    dispatch(initGame({ word: randomWord }));
+    dispatch(initGame());
     saveState();
   };
 
@@ -56,10 +54,23 @@ export const useGame = () => {
     saveState();
   };
 
+  const nextLevel = () => {
+    setLevel(game.nivel + 1);
+
+    if (game.nivel < 10) {
+      setTime(game.time + 60)
+    }
+  }
+
   const clearGame = () => {
     dispatch(resetGame());
     localStorage.removeItem(STORAGE_KEY);
   };
+
+  const validateWord = (word: string) => {
+    console.log('estado: ', game.word_correct)
+    return compareStrings(game.word_correct ?? '', word);
+  }
 
   return {
     game,
@@ -69,5 +80,7 @@ export const useGame = () => {
     setTime,
     loadState,
     clearGame,
+    validateWord,
+    nextLevel
   };
 };

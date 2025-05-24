@@ -29,6 +29,7 @@
       "@interface/*": ["src/types/*"],
       "@store/*": ["src/store/*"],
       "@hook/*": ["src/hooks/*"],
+      "@util/*": ["src/utils/*"],
     }
   },
   "include": ["src"]

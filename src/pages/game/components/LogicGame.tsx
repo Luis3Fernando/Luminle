@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useGame } from '@hook/useGame';
 
 export default function LogicGame() {
+  const { validateWord } = useGame();
   const rows = 6;
   const cols = 5;
 
@@ -23,11 +25,12 @@ export default function LogicGame() {
           setCurrentCol(currentCol + 1);
         } else {
           const word = grid[currentRow].join('') + key;
-          console.log('Palabra:', word);
+
           if (currentRow < rows - 1) {
             setCurrentRow(currentRow + 1);
             setCurrentCol(0);
           }
+          console.log('Validacion:', validateWord(word));
         }
       } else if (key === 'BACKSPACE') {
         if (currentCol > 0) {
