@@ -4,3 +4,7 @@ export function compareStrings(str1: string, str2: string): boolean {
     const str2Normalizada = str2.normalize('NFD').toLowerCase();
     return str1Normalizada === str2Normalizada;
 }
+
+export function upperString(str1: string) {
+    return str1.toUpperCase();
+}

@@ -22,6 +22,9 @@ const gameSlice = createSlice({
     addWord(state, action: PayloadAction<string>) {
       state.words.push(action.payload);
     },
+    updateWordCorrect(state, action: PayloadAction<string>) {
+      state.word_correct = action.payload
+    },
     updateLevel(state, action: PayloadAction<number>) {
       state.nivel = action.payload;
     },
@@ -43,6 +46,7 @@ export const {
   updateLevel,
   updateTime,
   resetGame,
+  updateWordCorrect,
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

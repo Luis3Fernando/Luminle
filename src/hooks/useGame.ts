@@ -1,12 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { compareStrings } from '../utils/words';
 import type { RootState } from '@store/store';
+import { words_1, words_2, words_3 } from '@data/words';
 import {
   initGame,
   addWord,
   updateLevel,
   updateTime,
   resetGame,
+  updateWordCorrect
 } from '@store/slices/gameSlice';
 
 const STORAGE_KEY = 'GAME_STATE';
@@ -55,11 +57,40 @@ export const useGame = () => {
   };
 
   const nextLevel = () => {
+    let new_word = 'ARBOL'
     setLevel(game.nivel + 1);
 
     if (game.nivel < 10) {
-      setTime(game.time + 60)
+      setTime(game.time + 60);
     }
+    else if (game.nivel < 20) {
+      setTime(game.time + 50);
+    }
+    else if (game.nivel < 30) {
+      setTime(game.time + 40);
+    }
+    else if (game.nivel < 40) {
+      setTime(game.time + 30);
+    }
+    else if (game.nivel < 50) {
+      setTime(game.time + 20);
+    }
+    else {
+      setTime(game.time + 10)
+    }
+
+
+    if (game.nivel < 20) {
+      new_word = words_1[Math.floor(Math.random() * words_1.length)]
+    }
+    else if (game.nivel < 40) {
+      new_word = words_2[Math.floor(Math.random() * words_2.length)]
+    }
+    else {
+      new_word = words_3[Math.floor(Math.random() * words_3.length)]
+    }
+
+    dispatch(updateWordCorrect(new_word));
   }
 
   const clearGame = () => {

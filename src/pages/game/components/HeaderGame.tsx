@@ -4,6 +4,7 @@ import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import * as motion from "motion/react-client";
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { FaFaceGrinBeamSweat } from "react-icons/fa6";
+import { useNavigate } from 'react-router-dom';
 
 const ball = {
   backgroundColor: "transparent",
@@ -12,6 +13,7 @@ const ball = {
 
 export default function HeaderGame() {
   const { game, setTime } = useGame();
+  const navigate = useNavigate();
   const [isMuted, setIsMuted] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -36,6 +38,10 @@ export default function HeaderGame() {
     return () => clearInterval(timer);
   }, [game.time]);
 
+  const handleNavigate = () => {
+    navigate('/');
+  }
+
   return (
     <>
       <header className="w-full text-white border-b border-gray-700 px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
@@ -50,7 +56,7 @@ export default function HeaderGame() {
           <span className="text-lg border border-gray-500 text-gray-300 px-3 py-1 rounded-md transition hover:text-blue-400 hover:border-blue-400 cursor-default">
             {formatTime(game.time)}
           </span>
-          <span className="text-sm mt-2 border border-gray-500 text-gray-300 px-3 py-1 rounded-md transition hover:text-emerald-400 hover:border-emerald-400 cursor-default">
+          <span className="text-sm mt-2 border border-gray-500 text-gray-300 px-3 py-1 rounded-md transition hover:text-yellow-400 hover:border-yellow-400 cursor-default">
             Nivel {game.nivel}
           </span>
         </div>
@@ -78,8 +84,8 @@ export default function HeaderGame() {
               <FaFaceGrinBeamSweat className='mx-auto' size={80} />
               <h2 className='text-center text-2xl mt-5'>Ready to surrender?</h2>
               <div className='flex w-full justify-center gap-4 mt-5'>
-                <button className='border w-30 border-gray-500 text-gray-300 px-4 py-2 rounded-md transition-colors duration-300 hover:text-pink-500 hover:border-primary cursor-pointer'>Yes</button>
-                <button className='border w-30 border-gray-500 text-gray-300 px-4 py-2 rounded-md transition-colors duration-300 hover:text-pink-500 hover:border-primary cursor-pointer'>No</button>
+                <button onClick={() => handleNavigate()} className='border w-30 border-gray-500 text-gray-300 px-4 py-2 rounded-md transition-colors duration-300 hover:text-pink-500 hover:border-primary cursor-pointer'>Yes</button>
+                <button onClick={() => setShowModal(false)} className='border w-30 border-gray-500 text-gray-300 px-4 py-2 rounded-md transition-colors duration-300 hover:text-pink-500 hover:border-primary cursor-pointer'>No</button>
               </div>
               <button
                 onClick={() => setShowModal(false)}
