@@ -10,10 +10,12 @@ import {
   resetGame,
   updateWordCorrect
 } from '@store/slices/gameSlice';
+import { useUserData } from './useUser';
 
 const STORAGE_KEY = 'GAME_STATE';
 
 export const useGame = () => {
+  const { addCorrectWord } = useUserData();
   const dispatch = useDispatch();
   const game = useSelector((state: RootState) => state.game);
 
@@ -59,6 +61,7 @@ export const useGame = () => {
   const nextLevel = () => {
     let new_word = 'ARBOL'
     setLevel(game.nivel + 1);
+    addCorrectWord();
 
     if (game.nivel < 10) {
       setTime(game.time + 60);

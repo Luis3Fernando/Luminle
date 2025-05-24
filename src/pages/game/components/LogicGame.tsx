@@ -4,6 +4,7 @@ import * as motion from "motion/react-client";
 import { useNavigate } from 'react-router-dom';
 import { ImSad2 } from "react-icons/im";
 import { upperString } from '../../../utils/words';
+import { useUserData } from '@/src/hooks/useUser';
 
 const ball = {
   backgroundColor: "transparent",
@@ -12,6 +13,7 @@ const ball = {
 
 export default function LogicGame() {
   const { game, nextLevel } = useGame();
+  const { updateNivel, updateTime } = useUserData();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
@@ -112,6 +114,8 @@ export default function LogicGame() {
   }, [game.time])
 
   const finish = () => {
+    updateNivel(game.nivel);
+    updateTime(game.time);
     navigate('/')
   }
 

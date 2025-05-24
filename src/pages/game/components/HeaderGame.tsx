@@ -5,6 +5,7 @@ import * as motion from "motion/react-client";
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { FaFaceGrinBeamSweat } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
+import { useUserData } from '@/src/hooks/useUser';
 
 const ball = {
   backgroundColor: "transparent",
@@ -13,6 +14,7 @@ const ball = {
 
 export default function HeaderGame() {
   const { game, setTime } = useGame();
+  const { updateNivel, updateTime } = useUserData();
   const navigate = useNavigate();
   const [isMuted, setIsMuted] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -39,6 +41,8 @@ export default function HeaderGame() {
   }, [game.time]);
 
   const handleNavigate = () => {
+    updateNivel(game.nivel);
+    updateTime(game.time);
     navigate('/');
   }
 

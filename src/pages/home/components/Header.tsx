@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaGithub } from "react-icons/fa";
-import { FaGamepad, FaFlag} from "react-icons/fa6";
+import { FaGamepad, FaFlag } from "react-icons/fa6";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { IoStatsChart } from "react-icons/io5";
 import { BsFillInfoCircleFill } from "react-icons/bs";
@@ -9,6 +9,7 @@ import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { TbCircleLetterLFilled } from "react-icons/tb";
 import { GiPlainCircle } from "react-icons/gi";
 import * as motion from "motion/react-client";
+import { useUserData } from '@/src/hooks/useUser';
 
 const ball = {
     backgroundColor: "transparent",
@@ -16,6 +17,7 @@ const ball = {
 }
 
 const Header: React.FC = () => {
+    const { user } = useUserData();
     const [showStats, setShowStats] = useState(false);
     const [showHowToPlay, setShowHowToPlay] = useState(false);
 
@@ -66,9 +68,9 @@ const Header: React.FC = () => {
                         <div className="bg-gray-900 relative text-white p-6 rounded-xl w-96 max-w-md shadow-2xl shadow-green-300">
                             <SiRedcandlegames className='mx-auto' size={80} />
                             <h2 className="text-2xl text-center mt-5 font-semibold mb-6">Statistics</h2>
-                            <p className='flex text-xl items-center gap-2'><TbCircleLetterLFilled /> Right words: ...</p>
-                            <p className='flex text-xl items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: ...</p>
-                            <p className='flex text-xl items-center gap-2'><FaFlag /> Record: ...</p>
+                            <p className='flex text-xl items-center gap-2'><TbCircleLetterLFilled /> Right words: {user.total_words_correct}</p>
+                            <p className='flex text-xl items-center gap-2'> <MdOutlineAccessTimeFilled /> Total time: {user.max_time}</p>
+                            <p className='flex text-xl items-center gap-2'><FaFlag /> Record: {user.max_nivel}</p>
                             <button
                                 onClick={() => setShowStats(false)}
                                 className="text-gray-700 absolute right-2 top-2 cursor-pointer hover:text-gray-600 transition"
