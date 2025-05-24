@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 
     return (
         <>
-            <header className="w-10/12 text-gray-200 mx-auto flex justify-between items-center px-6 py-4 bg-[#131219] border-gray-800 shadow-2xl shadow-primary z-50 rounded-lg">
+            <header className="w-10/12 text-gray-200 mx-auto flex justify-between items-center px-6 py-4 bg-[#131219] border-gray-800 shadow-lg shadow-primary z-50 rounded-lg">
 
                 <h1 className="text-3xl font-anta font-extrabold text-primary select-none">
                     LUMINLE

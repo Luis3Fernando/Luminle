@@ -3,8 +3,14 @@ import { useEffect, useRef } from "react";
 import { splitText } from "motion-plus";
 import { animate, stagger } from "motion";
 import { FaPlay } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
 function Content() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/Game');
+  };
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,7 +41,7 @@ function Content() {
       <div className="w-full text-white flex items-center justify-center p-6 mt-48">
         <button
           className="shadow-2xl cursor-pointer w-72 rounded-2xl gap-4 h-auto p-6 shadow-primary bg-primary flex items-center justify-center animate-bounce"
-          onClick={() => console.log("Jugar ahora")}
+          onClick={() => handleClick()}
         >
           <FaPlay size={50} color="white" />
           <h1 className="text-6xl">Play</h1>
