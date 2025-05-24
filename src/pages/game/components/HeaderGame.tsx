@@ -6,6 +6,7 @@ import { IoIosCloseCircleOutline } from 'react-icons/io';
 import { FaFaceGrinBeamSweat } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { useUserData } from '@/src/hooks/useUser';
+import { useSettings } from '@/src/hooks/useSettings';
 
 const ball = {
   backgroundColor: "transparent",
@@ -14,15 +15,10 @@ const ball = {
 
 export default function HeaderGame() {
   const { game, setTime } = useGame();
+  const { audio, toggleAudio } = useSettings();
   const { updateNivel, updateTime } = useUserData();
   const navigate = useNavigate();
-  const [isMuted, setIsMuted] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-
-  const toggleSound = () => {
-    setIsMuted(!isMuted);
-  };
 
   const formatTime = (seconds: any) => {
     const min = Math.floor(seconds / 60);
@@ -66,10 +62,10 @@ export default function HeaderGame() {
         </div>
 
         <button
-          onClick={toggleSound}
+          onClick={toggleAudio}
           className="border border-gray-500 text-gray-300 p-3 rounded-full transition-colors duration-300 hover:text-orange-400 hover:border-orange-400 cursor-pointer"
         >
-          {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
+          {audio ? <FaVolumeUp size={20} /> : <FaVolumeMute size={20} />}
         </button>
       </header>
 
