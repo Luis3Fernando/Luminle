@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useGame } from '@/src/hooks/useGame';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 export default function HeaderGame() {
+  const { game , setTime} = useGame();
   const [isMuted, setIsMuted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(90);
 
   const toggleSound = () => {
     setIsMuted(!isMuted);
@@ -14,15 +15,16 @@ export default function HeaderGame() {
     const sec = seconds % 60;
     return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
   };
+
   useEffect(() => {
-    if (timeLeft <= 0) return;
+    if (game.time <= 0) return;
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
+      setTime(game.time - 1);
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [game.time]);
 
   return (
     <header className="w-full text-white border-b border-gray-700 px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
@@ -34,10 +36,10 @@ export default function HeaderGame() {
 
       <div className="flex flex-col items-center">
         <span className="text-lg border border-gray-500 text-gray-300 px-3 py-1 rounded-md transition hover:text-blue-400 hover:border-blue-400 cursor-default">
-          {formatTime(timeLeft)}
+          {formatTime(game.time)}
         </span>
         <span className="text-sm mt-2 border border-gray-500 text-gray-300 px-3 py-1 rounded-md transition hover:text-emerald-400 hover:border-emerald-400 cursor-default">
-          Nivel 3
+          Nivel {game.nivel}
         </span>
       </div>
 

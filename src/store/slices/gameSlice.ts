@@ -1,0 +1,47 @@
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { GameState } from '@interface/game';
+
+const initialState: GameState = {
+  word_correct: null,
+  words: [],
+  nivel: 1,
+  time: 60,
+};
+
+const gameSlice = createSlice({
+  name: 'game',
+  initialState,
+  reducers: {
+    initGame(state, action: PayloadAction<{ word: string }>) {
+      state.word_correct = action.payload.word;
+      state.words = [];
+      state.nivel = 1;
+      state.time = 60;
+    },
+    addWord(state, action: PayloadAction<string>) {
+      state.words.push(action.payload);
+    },
+    updateLevel(state, action: PayloadAction<number>) {
+      state.nivel = action.payload;
+    },
+    updateTime(state, action: PayloadAction<number>) {
+      state.time = action.payload;
+    },
+    resetGame(state) {
+      state.word_correct = null;
+      state.words = [];
+      state.nivel = 1;
+      state.time = 60;
+    },
+  },
+});
+
+export const {
+  initGame,
+  addWord,
+  updateLevel,
+  updateTime,
+  resetGame,
+} = gameSlice.actions;
+
+export default gameSlice.reducer;
