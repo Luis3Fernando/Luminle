@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { ImSad2 } from "react-icons/im";
 import { upperString } from '../../../utils/words';
 import { useUserData } from '@/src/hooks/useUser';
+import { useSettings } from '@/src/hooks/useSettings';
+import { playSound } from '@/src/utils/sound';
+
+const audioURL = "/audio/sound_keyboard.wav";
 
 const ball = {
   backgroundColor: "transparent",
@@ -13,6 +17,7 @@ const ball = {
 
 export default function LogicGame() {
   const { game, nextLevel } = useGame();
+  const { audio } = useSettings();
   const { updateNivel, updateTime } = useUserData();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -34,6 +39,9 @@ export default function LogicGame() {
       const key = e.key.toUpperCase();
 
       if (/^[A-ZÑ]$/.test(key)) {
+        if (audio) {
+          playSound(audioURL)
+        }
         if (currentCol < cols) {
           setGrid(prev => {
             const newGrid = [...prev];
@@ -41,6 +49,7 @@ export default function LogicGame() {
             return newGrid;
           });
           setCurrentCol(currentCol + 1);
+
         }
 
         if (currentCol === cols - 1) {
@@ -77,12 +86,12 @@ export default function LogicGame() {
           setGrid(newGrid);
 
           const isCorrect = resultRow.every(cell => cell.color === 'green');
+
           if (isCorrect) {
             setTimeout(() => {
               setGrid(createEmptyGrid());
               setCurrentRow(0);
               setCurrentCol(0);
-              // actualizar el nivel
               nextLevel();
             }, 1000);
           } else {
