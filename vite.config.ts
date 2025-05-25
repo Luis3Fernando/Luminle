@@ -6,5 +6,5 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), tsconfigPaths()],
-  base: '/Luminle/',
+  base: 'https://luis3fernando.github.io/Luminle/',
 })
