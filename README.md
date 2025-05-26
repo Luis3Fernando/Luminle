@@ -1,7 +1,7 @@
 # LUMINLE 
 <img src="src/assets/icons/luminle.png" alt="luminle" width="50"/>
 
-![Version](https://img.shields.io/badge/version-1.0.0-Chttps://img.shields.io/badge/status-Completed-CD0058D0058) ![Language](https://img.shields.io/badge/language-Typescript-CD0058) ![Status]()
+![Version](https://img.shields.io/badge/version-1.0.0-CD0058) ![Language](https://img.shields.io/badge/language-Typescript-CD0058) ![Language](https://img.shields.io/badge/language-Typescript-CD0058) ![Status]()
 ![Stars](https://img.shields.io/github/stars/Luis3Fernando/Luminle?style=social)
 
 I developed an adaptation of the famous game WORDLE, with the purpose of giving it an own and authentic touch, also an arcade gameplay to make it more interesting. 
