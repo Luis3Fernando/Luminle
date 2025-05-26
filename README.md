@@ -1,6 +1,5 @@
-# LUMINLE
-
 <img src="src/assets/icons/luminle.png" alt="luminle" width="50"/>
+# LUMINLE
 
 ![Version](https://img.shields.io/badge/version-1.0.0-Chttps://img.shields.io/badge/status-Completed-CD0058D0058) ![Language](https://img.shields.io/badge/language-Typescript-CD0058) ![Status]()
 ![Stars](https://img.shields.io/github/stars/Luis3Fernando/Luminle?style=social)
