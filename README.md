@@ -1,6 +1,6 @@
 # LUMINLE
 
-<img src="src/assets/icon/luminle.png" alt="luminle" width="50"/>
+<img src="src/assets/icons/luminle.png" alt="luminle" width="50"/>
 
 ![Version](https://img.shields.io/badge/version-1.0.0-Chttps://img.shields.io/badge/status-Completed-CD0058D0058) ![Language](https://img.shields.io/badge/language-Typescript-CD0058) ![Status]()
 ![Stars](https://img.shields.io/github/stars/Luis3Fernando/Luminle?style=social)
@@ -54,7 +54,7 @@ You will be able to see informative panels:
 
 - ⬜ An uncolored box means the letter does not belong to the word.
 
-** Examples **
+**Examples**
 
 <img src="src/assets/screenshots/example.png" width="600"/>
 <img src="src/assets/screenshots/victory.png" width="600"/>
