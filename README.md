@@ -8,7 +8,7 @@ I developed an adaptation of the famous game WORDLE, with the purpose of giving 
 
 I invite you to use it, with the following link:
 
-https://github.com/Luis3Fernando/Luminle
+https://luis3fernando.github.io/Luminle/
 
 ---
 
